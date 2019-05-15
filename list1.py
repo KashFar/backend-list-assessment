@@ -23,9 +23,12 @@
 # and last chars of the string are the same.
 # Note: python does not have a ++ operator, but += works.
 def match_ends(words):
-    """Your code goes here.  Edit this docstring."""
-    return
-
+    """Counts how many words start and end with the last letter."""
+    ends_match = 0
+    for word in words:
+        if len(word)>1 and word[0]==word[-1]:
+           ends_match += 1
+    return ends_match
 
 # B. front_x
 # Given a list of strings, return a list with the strings
@@ -35,9 +38,18 @@ def match_ends(words):
 # Hint: this can be done by making 2 lists and sorting each of them
 # before combining them.
 def front_x(words):
-    """Your code goes here.  Edit this docstring."""
-    return
-
+    """This puts letters that start with x at the front"""
+    x_list = []
+    other_list = []
+    for word in words:
+        if word[0]== 'x':
+            x_list.append(word)
+        else:
+            other_list.append(word)
+    x_list.sort()
+    other_list.sort()
+    merged_list = x_list + other_list  
+    return merged_list
 
 # C. sort_last
 # Given a list of non-empty tuples, return a list sorted in increasing
@@ -45,10 +57,17 @@ def front_x(words):
 # e.g. [(1, 7), (1, 3), (3, 4, 5), (2, 2)] yields
 # [(2, 2), (1, 3), (3, 4, 5), (1, 7)]
 # Hint: use a custom key= function to extract the last element form each tuple.
-def sort_last(tuples):
-    """Your code goes here.  Edit this docstring."""
-    return
 
+# def sort_last(tuples):
+#     """Your code goes here.  Edit this docstring."""
+#     return sorted(tuples, key = lambda x: x[-1])
+
+def sort_by_last(x):
+    return x[-1]
+
+def sort_last(tuples):
+    """Sorts by last entry in the tuple"""
+    return sorted(tuples, key = sort_by_last)
 
 # Simple provided test() function used in main() to print
 # what each function returns vs. what it's supposed to return.
